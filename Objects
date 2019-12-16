@@ -1,0 +1,71 @@
+public class Objects {
+    public static void main(String[] args) {
+        Person object1 = new Student("Ismat", "Syah Imran", 35);
+        System.out.println(object1.toString() + "\n");
+        System.out.println(((Student)object1).getId());
+        /*
+        Line 5 would not work without casting because the static type of the variable
+        determines what variables can be called and the static type Person doesn't have getId()
+         */
+         System.out.println(object1.getFirstName());
+        ((Student) object1).setId(57); //the id of object1 cannot be changed directly because it is encapsulated
+        System.out.println(((Student)object1).getId());
+    }
+}
+
+interface PersonInterface {
+    public String getFirstName();
+    public String getLastName();
+    public String toString();
+}
+
+class Person implements PersonInterface{
+
+    private String firstName;
+    private String lastName;
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String toString() {
+        String s = "";
+        s+= "First Name:\t"+ firstName + "\n";
+        s+= "Last Name:\t"+ lastName + "\n";
+        return s;
+    }
+}
+
+class Student extends Person { //the class person inherits firstName and lastName from the person class
+
+    private int id;
+
+    public Student(String firstName, String lastName, int id) {
+        super(firstName,lastName);
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String toString() {
+        String s = "";
+        s+= super.toString();
+        s+= "ID:\t\t"+ id + "\n";
+        return s;
+    }
+}
