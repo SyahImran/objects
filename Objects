@@ -1,7 +1,7 @@
 public class Objects {
     public static void main(String[] args) {
         Person object1 = new Student("Ismat", "Syah Imran", 35);
-        System.out.println(object1.toString() + "\n");
+        System.out.println(object1.toString() + "\n");//this works because both the static and dynamic type of object1 has a toString() method
         System.out.println(((Student)object1).getId());
         /*
         Line 5 would not work without casting because the static type of the variable
