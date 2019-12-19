@@ -1,17 +1,34 @@
+/**
+ * The following classes and interface demonstrate concepts in object-oriented programming
+ *
+ * @author Ismat Syah Imran
+ */
+
 public class Objects {
+
+    /**
+     * This is the main method which creates an object and prints its properties
+     * @param args Unused
+     */
+
     public static void main(String[] args) {
         Person object1 = new Student("Ismat", "Syah Imran", 35);
-        System.out.println(object1.toString() + "\n");//this works because both the static and dynamic type of object1 has a toString() method
+        System.out.println(object1.toString() + "\n");
+        //line 10 works because both the static and dynamic types of object1 have a toString() method
         System.out.println(((Student)object1).getId());
         /*
-        Line 5 would not work without casting because the static type of the variable
-        determines what variables can be called and the static type Person doesn't have getId()
+         * Line 12 would not work without casting because the static type of the variable determines what methods can
+         * be called and the static type Person doesn't have getId()
          */
-         System.out.println(object1.getFirstName());
+        System.out.println(object1.getFirstName());
         ((Student) object1).setId(57); //the id of object1 cannot be changed directly because it is encapsulated
         System.out.println(((Student)object1).getId());
     }
 }
+
+/**
+ * This interface is the basic file that lists the required methods for the Person class
+ */
 
 interface PersonInterface {
     public String getFirstName();
@@ -19,23 +36,49 @@ interface PersonInterface {
     public String toString();
 }
 
+/**
+ * This class creates an object that stores a first and last name
+ * It includes getter methods and a formatted toString method
+ */
+
 class Person implements PersonInterface{
 
     private String firstName;
     private String lastName;
+
+    /**
+     * The constructor initializes the variables according to the parameters
+     * @param firstName This is the string of the first name
+     * @param lastName This is the string of the last name
+     */
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
+    /**
+     * Gets the first name
+     * @return String This specifies the first name
+     */
+
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Gets the last name
+     * @return String This specifies the last name
+     */
+
     public String getLastName() {
         return lastName;
     }
+
+    /**
+     * Gets a formatted first and last name
+     * @return String This formats the first and last name
+     */
 
     public String toString() {
         String s = "";
@@ -45,22 +88,49 @@ class Person implements PersonInterface{
     }
 }
 
-class Student extends Person { //the class person inherits firstName and lastName from the person class
+/**
+ * This class extends the Person class and stores an id number
+ * The class includes getter and setter methods for id
+ */
 
-    private int id;
+class Student extends Person {
+
+    private int id; //id is encapsulated by making the access modifier private
+
+    /**
+     * This initializes id using the parameter and calls the parent constructor to initialize first and last name
+     * @param firstName This is a string of the first name
+     * @param lastName This is a string of the last name
+     * @param id This is an integer of the id number
+     */
 
     public Student(String firstName, String lastName, int id) {
         super(firstName,lastName);
         this.id = id;
     }
 
+    /**
+     * Gets the id number
+     * @return int This specifies the id number
+     */
+
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets the id number
+     * @param id This is an integer of the id number
+     */
+
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     * Gets a formatted first name, last name, and id number
+     * @return String This formats the first name, last name, and id number
+     */
 
     public String toString() {
         String s = "";
