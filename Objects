@@ -14,10 +14,10 @@ public class Objects {
     public static void main(String[] args) {
         Person object1 = new Student("Ismat", "Syah Imran", 35);
         System.out.println(object1.toString() + "\n");
-        //line 10 works because both the static and dynamic types of object1 have a toString() method
+        //line 16 works because both the static and dynamic types of object1 have a toString() method
         System.out.println(((Student)object1).getId());
         /*
-         * Line 12 would not work without casting because the static type of the variable determines what methods can
+         * Line 18 would not work without casting because the static type of the variable determines what methods can
          * be called and the static type Person doesn't have getId()
          */
         System.out.println(object1.getFirstName());
